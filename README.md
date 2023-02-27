@@ -1,2 +1,1 @@
-# SaJoSaJoNi
-Sandro, Josias, Sarah, Johannes, Nicolas
+# Tic Tac Toe
