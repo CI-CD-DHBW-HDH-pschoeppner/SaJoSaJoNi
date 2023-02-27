@@ -44,7 +44,6 @@ export function mediumMove(board: Field[], own: Field): number {
     goalField = blanks[Math.floor(Math.random() * blanks.length)];
   }
 
-  console.log(goalField)
   return goalField; // TODO: implement
 }
 
