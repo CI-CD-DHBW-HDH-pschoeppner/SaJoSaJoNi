@@ -1,4 +1,4 @@
-import { getBlanks, Field, won } from "../game";
+import { getBlanks, Field, won, invertPlayer } from "../game";
 
 // the medium bot:
 // - chooses the winning move, if it can win
@@ -30,6 +30,9 @@ export function mediumMove(board: Field[], own: Field): number {
       if (board[i] === 0 && board[i + 1] === 1 && board[i + 2] === 1) {
         goalField = i;
       }
+      if(board[i] === 1 && board[i + 1] === 0 && board[i + 2] === 1) {
+        goalField = i + 1;
+      }
     }
 
     // vertical
@@ -39,6 +42,9 @@ export function mediumMove(board: Field[], own: Field): number {
       }
       if (board[i] === 0 && board[i + 3] === 1 && board[i + 6] === 1) {
         goalField = i;
+      }
+      if(board[i] === 1 && board[i + 3] === 0 && board[i + 6] === 1) {
+        goalField = i + 3;
       }
     }
 
