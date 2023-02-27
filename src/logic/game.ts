@@ -120,10 +120,18 @@ export function isFull(board: Field[]): boolean {
 // returns: the player, that won, or Field.EMPTY if no one won (draw or not finished)
 export function won(board: Field[]): Field {
   for (const player of [Field.PLAYER1, Field.PLAYER2]) {
-    if (
-      false // TODO: implement
-    )
+    const winCombos = [    [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertikal
+    [0, 4, 8], [2, 4, 6] // diagonal
+  ];
+
+  for (let i = 0; i < winCombos.length; i++) {
+    const [a, b, c] = winCombos[i];
+    if (board[a] === player && board[b] === player && board[c] === player) {
       return player;
+    }
+  }
+    
   }
   return Field.EMPTY;
 }
