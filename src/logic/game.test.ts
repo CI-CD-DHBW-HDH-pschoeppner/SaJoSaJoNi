@@ -42,7 +42,7 @@ describe("updateMode", () => {
 
 describe("newBoard", () => {
   it("check new board", () => {
-    var board: Field[] = [9];
+    var board: Field[] = new Array<Field>(9);
     for (var i = 0; i < 9; i++) {
       board[i] = Field.EMPTY;
     }
@@ -53,7 +53,7 @@ describe("newBoard", () => {
 
 describe("isFull", () => {
   it("check full board", () => {
-    var board: Field[] = [9];
+    var board: Field[] = new Array<Field>(9);
     for (var i = 0; i < 9; i++) {
       if(i % 2 == 0){
         board[i] = Field.PLAYER1;
