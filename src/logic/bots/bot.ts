@@ -1,4 +1,4 @@
-import { Field, isPlayer, Mode } from "../game";
+import { Field, getBlanks, isPlayer, Mode, won } from "../game";
 import { easyMove } from "./easy";
 import { hardMove } from "./hard";
 import { mediumMove, pettyMove } from "./medium";
@@ -30,8 +30,15 @@ export function moveWithMode(mode: Mode): BotMove | undefined {
 // - -1 if there is none
 export function winningMove(board: Field[], player: Field): number {
   if (!isPlayer(player)) throw new Error(`Player ${player} is not valid`);
+  const blanks = getBlanks(board);
 
-  // TODO: implement
+  for (let blank of blanks) {
+    let board_copy = [...board];
+    board_copy[blank] = player;
+    if (won(board_copy) === player) {
+      return blank;
+    }
+  }
 
   return -1;
 }
