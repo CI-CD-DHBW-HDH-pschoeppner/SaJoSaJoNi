@@ -1,4 +1,15 @@
-import { Field, Game, getBlanks, invertPlayer, isFull, isPlayer, Mode, newBoard, Player, won } from "./game";
+import {
+  Field,
+  Game,
+  getBlanks,
+  invertPlayer,
+  isFull,
+  isPlayer,
+  Mode,
+  newBoard,
+  Player,
+  won,
+} from "./game";
 
 describe("invert player", () => {
   it("invert player1 to player2", () => {
@@ -50,18 +61,15 @@ describe("newBoard", () => {
   });
 });
 
-
 describe("isFull", () => {
   it("check full board", () => {
     const board: Field[] = new Array<Field>(9);
     for (let i = 0; i < 9; i++) {
-      if(i % 2 == 0){
+      if (i % 2 == 0) {
         board[i] = Field.PLAYER1;
-      }
-      else{
+      } else {
         board[i] = Field.PLAYER2;
       }
-
     }
     expect(isFull(board)).toBe(true);
   });
@@ -69,7 +77,7 @@ describe("isFull", () => {
   it("check not full board", () => {
     const board: Field[] = newBoard();
     for (let i = 0; i < 9; i++) {
-      if(i > 7){
+      if (i > 7) {
         board[i] = Field.PLAYER1;
       }
     }
@@ -79,44 +87,47 @@ describe("isFull", () => {
 
 describe("won", () => {
   it("check player1 row win", () => {
-    const board: Field[] = 
-    [Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER2,
-    Field.PLAYER2,
-    Field.EMPTY,
-    Field.EMPTY,
-    Field.EMPTY,
-    Field.EMPTY];   
+    const board: Field[] = [
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER2,
+      Field.PLAYER2,
+      Field.EMPTY,
+      Field.EMPTY,
+      Field.EMPTY,
+      Field.EMPTY,
+    ];
     expect(won(board)).toBe(Field.PLAYER1);
   });
 
   it("check player2 column win", () => {
-    const board: Field[] = 
-    [Field.PLAYER2,
-    Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER2,
-    Field.PLAYER2,
-    Field.EMPTY,
-    Field.PLAYER2,
-    Field.EMPTY,
-    Field.EMPTY];   
+    const board: Field[] = [
+      Field.PLAYER2,
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER2,
+      Field.PLAYER2,
+      Field.EMPTY,
+      Field.PLAYER2,
+      Field.EMPTY,
+      Field.EMPTY,
+    ];
     expect(won(board)).toBe(Field.PLAYER2);
   });
 
   it("check player1 diagonal win", () => {
-    const board: Field[] =
-    [Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER2,
-    Field.PLAYER2,
-    Field.PLAYER1,
-    Field.EMPTY,
-    Field.EMPTY,
-    Field.EMPTY,
-    Field.PLAYER1];
+    const board: Field[] = [
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER2,
+      Field.PLAYER2,
+      Field.PLAYER1,
+      Field.EMPTY,
+      Field.EMPTY,
+      Field.EMPTY,
+      Field.PLAYER1,
+    ];
     expect(won(board)).toBe(Field.PLAYER1);
   });
 
@@ -126,16 +137,17 @@ describe("won", () => {
   });
 
   it("check draw on full board", () => {
-    const board: Field[] = 
-    [Field.PLAYER1,
-    Field.PLAYER2,
-    Field.PLAYER1,
-    Field.PLAYER2,
-    Field.PLAYER2,
-    Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER1,
-    Field.PLAYER2];   
+    const board: Field[] = [
+      Field.PLAYER1,
+      Field.PLAYER2,
+      Field.PLAYER1,
+      Field.PLAYER2,
+      Field.PLAYER2,
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.PLAYER2,
+    ];
     expect(won(board)).toBe(Field.EMPTY);
   });
 });
@@ -146,17 +158,18 @@ describe("getBlanks", () => {
     expect(getBlanks(board).length).toEqual(9);
   });
 
-  it("getBlanks on Board",() => {
-    const board: Field[] =
-    [Field.PLAYER1,
-    Field.PLAYER1,
-    Field.EMPTY,
-    Field.PLAYER2,
-    Field.EMPTY,
-    Field.EMPTY,
-    Field.PLAYER1,
-    Field.EMPTY,
-    Field.EMPTY];
+  it("getBlanks on Board", () => {
+    const board: Field[] = [
+      Field.PLAYER1,
+      Field.PLAYER1,
+      Field.EMPTY,
+      Field.PLAYER2,
+      Field.EMPTY,
+      Field.EMPTY,
+      Field.PLAYER1,
+      Field.EMPTY,
+      Field.EMPTY,
+    ];
     expect(getBlanks(board)).toEqual([2, 4, 5, 7, 8]);
   });
 });

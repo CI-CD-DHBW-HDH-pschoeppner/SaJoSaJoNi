@@ -1,6 +1,6 @@
 import { Field, getBlanks, invertPlayer, won } from "../game";
 
-// hardMove determines recursively determines the best move for the given player 
+// hardMove determines recursively determines the best move for the given player
 export function hardMove(board: Field[], own: Field): number {
   const blanks = getBlanks(board);
 

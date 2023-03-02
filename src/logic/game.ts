@@ -62,7 +62,7 @@ export class Game {
     this.enemy.botMove = moveWithMode(this.mode);
   }
 
-  // score a win for the given player 
+  // score a win for the given player
   addWin(player: Field) {
     switch (player) {
       case Field.PLAYER1:
@@ -120,18 +120,23 @@ export function isFull(board: Field[]): boolean {
 // returns: the player, that won, or Field.EMPTY if no one won (draw or not finished)
 export function won(board: Field[]): Field {
   for (const player of [Field.PLAYER1, Field.PLAYER2]) {
-    const winCombos = [    [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertikal
-    [0, 4, 8], [2, 4, 6] // diagonal
-  ];
+    const winCombos = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8], // horizontal
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8], // vertikal
+      [0, 4, 8],
+      [2, 4, 6], // diagonal
+    ];
 
-  for (let i = 0; i < winCombos.length; i++) {
-    const [a, b, c] = winCombos[i];
-    if (board[a] === player && board[b] === player && board[c] === player) {
-      return player;
+    for (let i = 0; i < winCombos.length; i++) {
+      const [a, b, c] = winCombos[i];
+      if (board[a] === player && board[b] === player && board[c] === player) {
+        return player;
+      }
     }
-  }
-    
   }
   return Field.EMPTY;
 }
@@ -145,16 +150,18 @@ export function newBoard(): Field[] {
 
 // getBlanks returns the indices of all empty fields in a given board
 export function getBlanks(board: Field[]): number[] {
-  return board
-    // first, map all Field.EMPTY to their index, all others to -1
-    .map<number>((field, index) => {
-      if (field !== Field.EMPTY) return -1;
-      return index;
-    })
-    // than, filter out all -1 values
-    .filter((value) => {
-      return value >= 0;
-    });
+  return (
+    board
+      // first, map all Field.EMPTY to their index, all others to -1
+      .map<number>((field, index) => {
+        if (field !== Field.EMPTY) return -1;
+        return index;
+      })
+      // than, filter out all -1 values
+      .filter((value) => {
+        return value >= 0;
+      })
+  );
 }
 
 // invertPlayer returns:

@@ -48,7 +48,6 @@ export function mediumMove(board: Field[], own: Field): number {
 }
 
 export function pettyMove(board: Field[], own: Field): number {
-
   const blanks = getBlanks(board);
 
   //brute force check if enemy could win with a move
