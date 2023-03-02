@@ -8,7 +8,7 @@ import { getBlanks, Field, won, invertPlayer } from "../game";
 export function mediumMove(board: Field[], own: Field): number {
   const blanks = getBlanks(board);
 
-  var goalField = -1;
+  let goalField = -1;
 
   // chooses the winning move, if it can win
   for (const move of blanks) {
@@ -52,8 +52,8 @@ export function pettyMove(board: Field[], own: Field): number {
   const blanks = getBlanks(board);
 
   //brute force check if enemy could win with a move
-  for (var field of blanks) {
-    var simulatedBoard = [...board];
+  for (const field of blanks) {
+    const simulatedBoard = [...board];
     simulatedBoard[field] = invertPlayer(own);
 
     //check if enemy would win with this move

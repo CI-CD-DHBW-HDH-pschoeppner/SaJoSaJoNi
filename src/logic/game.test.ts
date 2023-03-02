@@ -17,7 +17,7 @@ describe("invert player", () => {
 
 describe("add Win", () => {
   it("add win to player", () => {
-    var player: Player = new Player(Field.PLAYER1);
+    const player: Player = new Player(Field.PLAYER1);
     player.addWin();
     expect(player.score).toBe(1);
   });
@@ -25,7 +25,7 @@ describe("add Win", () => {
 
 describe("switchSides", () => {
   it("update score on switch", () => {
-    var game: Game = new Game();
+    const game: Game = new Game();
     game.player.addWin();
     game.switchSides();
     expect(game.enemy.score).toBe(1);
@@ -34,7 +34,7 @@ describe("switchSides", () => {
 
 describe("updateMode", () => {
   it("update mode to human", () => {
-    var game: Game = new Game();
+    const game: Game = new Game();
     game.updateMode(Mode.HUMAN);
     expect(game.mode).toBe(Mode.HUMAN);
   });
@@ -42,8 +42,8 @@ describe("updateMode", () => {
 
 describe("newBoard", () => {
   it("check new board", () => {
-    var board: Field[] = new Array<Field>(9);
-    for (var i = 0; i < 9; i++) {
+    const board: Field[] = new Array<Field>(9);
+    for (let i = 0; i < 9; i++) {
       board[i] = Field.EMPTY;
     }
     expect(newBoard()).toEqual(board);
@@ -53,8 +53,8 @@ describe("newBoard", () => {
 
 describe("isFull", () => {
   it("check full board", () => {
-    var board: Field[] = new Array<Field>(9);
-    for (var i = 0; i < 9; i++) {
+    const board: Field[] = new Array<Field>(9);
+    for (let i = 0; i < 9; i++) {
       if(i % 2 == 0){
         board[i] = Field.PLAYER1;
       }
@@ -67,8 +67,8 @@ describe("isFull", () => {
   });
 
   it("check not full board", () => {
-    var board: Field[] = newBoard();
-    for (var i = 0; i < 9; i++) {
+    const board: Field[] = newBoard();
+    for (let i = 0; i < 9; i++) {
       if(i > 7){
         board[i] = Field.PLAYER1;
       }
@@ -79,7 +79,7 @@ describe("isFull", () => {
 
 describe("won", () => {
   it("check player1 row win", () => {
-    var board: Field[] = 
+    const board: Field[] = 
     [Field.PLAYER1,
     Field.PLAYER1,
     Field.PLAYER1,
@@ -93,7 +93,7 @@ describe("won", () => {
   });
 
   it("check player2 column win", () => {
-    var board: Field[] = 
+    const board: Field[] = 
     [Field.PLAYER2,
     Field.PLAYER1,
     Field.PLAYER1,
@@ -107,7 +107,7 @@ describe("won", () => {
   });
 
   it("check player1 diagonal win", () => {
-    var board: Field[] =
+    const board: Field[] =
     [Field.PLAYER1,
     Field.PLAYER1,
     Field.PLAYER2,
@@ -121,12 +121,12 @@ describe("won", () => {
   });
 
   it("check draw on empty board", () => {
-    var board: Field[] = newBoard();
+    const board: Field[] = newBoard();
     expect(won(board)).toBe(Field.EMPTY);
   });
 
   it("check draw on full board", () => {
-    var board: Field[] = 
+    const board: Field[] = 
     [Field.PLAYER1,
     Field.PLAYER2,
     Field.PLAYER1,
@@ -142,12 +142,12 @@ describe("won", () => {
 
 describe("getBlanks", () => {
   it("getBlanks on empty Board", () => {
-    var board: Field[] = newBoard();
+    const board: Field[] = newBoard();
     expect(getBlanks(board).length).toEqual(9);
   });
 
   it("getBlanks on Board",() => {
-    var board: Field[] =
+    const board: Field[] =
     [Field.PLAYER1,
     Field.PLAYER1,
     Field.EMPTY,

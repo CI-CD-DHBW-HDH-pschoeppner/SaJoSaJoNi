@@ -20,10 +20,10 @@ describe("test easyMove-Function", () => {
             Field.EMPTY, Field.EMPTY, Field.EMPTY, 
             Field.EMPTY, Field.EMPTY, Field.EMPTY];
 
-        var own = Field.PLAYER1;
+        const own = Field.PLAYER1;
 
         randomMoveSpy.mockReturnValueOnce(8);
-        var got = easyMove(board ,own);
+        const got = easyMove(board ,own);
 
         expect(got).toEqual(8);
         expect(randomMoveSpy).toHaveBeenCalled();
@@ -37,7 +37,7 @@ describe("test easyMove-Function", () => {
 
         const own = Field.PLAYER2
 
-        var got = easyMove(board , own);
+        const got = easyMove(board , own);
         expect(got).toBe(7);
 
     });
@@ -49,7 +49,7 @@ describe("test easyMove-Function", () => {
 
         const own = Field.PLAYER1
         
-        var got = easyMove(board , own);
+        const got = easyMove(board , own);
         expect(got).toBe(2);
 
     });

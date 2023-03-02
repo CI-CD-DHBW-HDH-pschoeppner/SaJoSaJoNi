@@ -32,8 +32,8 @@ export function winningMove(board: Field[], player: Field): number {
   if (!isPlayer(player)) throw new Error(`Player ${player} is not valid`);
   const blanks = getBlanks(board);
 
-  for (let blank of blanks) {
-    let board_copy = [...board];
+  for (const blank of blanks) {
+    const board_copy = [...board];
     board_copy[blank] = player;
     if (won(board_copy) === player) {
       return blank;
