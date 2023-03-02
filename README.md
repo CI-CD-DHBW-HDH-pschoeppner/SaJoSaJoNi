@@ -14,3 +14,6 @@ The unnecessarily detailed guide for idiots:
 8. Rage-quit.[^1]
 
 [^1] We do not take responsibility for equipment or livelyhoods damaged during fits of rage by the end user.
+
+## Docker
+There *is* a Docker image for this repository, too. I *could* tell you how to set it up, but honestly, I can't be bothered to. Figure it out yourself, you can read documentation just as well as I can.
